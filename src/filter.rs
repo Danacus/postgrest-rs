@@ -635,8 +635,8 @@ impl Builder {
         self
     }
 
-    /// Finds all rows whose array or range value on the stated `column` is
-    /// contained by the specified `filter`.
+    /// Finds all rows whose array or range value on the stated `column`
+    /// overlaps (has a value in common) with the specified `filter`.
     ///
     /// # Example
     ///
@@ -659,7 +659,7 @@ impl Builder {
         U: AsRef<str>,
     {
         self.queries
-            .push((column.into(), format!("cd.{}", filter.as_ref())));
+            .push((column.into(), format!("ov.{}", filter.as_ref())));
         self
     }
 
